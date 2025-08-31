@@ -1,17 +1,17 @@
 List the given functions:
 
-f1(n)  = n * log2(n)
-f2(n)  = 12 * n^0.5
-f3(n)  = 1/n
-f4(n)  = n^(log2(n))
-f5(n)  = 100n^2 + 6n
-f6(n)  = n^0.51
-f7(n)  = n^2 - 324
-f8(n)  = 50 * n^0.5
-f9(n)  = 2n^3
-f10(n) = 3^n
-f11(n) = (2^32) * n
-f12(n) = log2(n)
+f1(n)  = n * log2(n) ,
+f2(n)  = 12 * n^0.5 ,
+f3(n)  = 1/n ,
+f4(n)  = n^(log2(n)) ,
+f5(n)  = 100n^2 + 6n ,
+f6(n)  = n^0.51 ,
+f7(n)  = n^2 - 324 ,
+f8(n)  = 50 * n^0.5 ,
+f9(n)  = 2n^3 ,
+f10(n) = 3^n , 
+f11(n) = (2^32) * n ,
+f12(n) = log2(n) ,
 
 
 Comparing asymptotic growth rates :
