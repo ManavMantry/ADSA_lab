@@ -55,6 +55,7 @@ A loop systematically increases array size from 1000 to 200000,
 builds a sorted array for each size, and records how long both search algorithms take.
 
 The result is a dataset that can graph to see which algorithm is faster.
+
 --------------------------------------------------------------------------------
 Program Explanation
 
