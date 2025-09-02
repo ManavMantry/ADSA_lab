@@ -46,7 +46,7 @@ Converting to same base
     we get:
     O(log₃ n) = O((1 / 1.585) * log₂ n)
 
-__________________________________________________________________________
+--------------------------------------------------------------------------------
 
 Approach :
 
@@ -55,7 +55,7 @@ A loop systematically increases array size from 1000 to 200000,
 builds a sorted array for each size, and records how long both search algorithms take.
 
 The result is a dataset that can graph to see which algorithm is faster.
-
+--------------------------------------------------------------------------------
 Program Explanation
 
 The main() function runs an experiment:
