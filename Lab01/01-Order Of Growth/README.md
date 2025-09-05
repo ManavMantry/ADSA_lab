@@ -1,46 +1,44 @@
-List the given functions:
+# Function Growth Comparison in C
 
-          f1(n)  = n * log2(n) ,
-          f2(n)  = 12 * n^0.5 ,
-          f3(n)  = 1/n ,
-          f4(n)  = n^(log2(n)) ,
-          f5(n)  = 100n^2 + 6n ,
-          f6(n)  = n^0.51 ,
-          f7(n)  = n^2 - 324 ,
-          f8(n)  = 50 * n^0.5 ,
-          f9(n)  = 2n^3 ,
-          f10(n) = 3^n , 
-          f11(n) = (2^32) * n ,
-          f12(n) = log2(n) ,
+This project demonstrates the **comparison of growth rates** of different mathematical functions using C.  
+It evaluates 12 functions over a range of values of `n`, prints their values, and determines their asymptotic ordering using `qsort`.
 
+---
 
-Comparing asymptotic growth rates :
+## 📌 Features
+- Defines **12 different mathematical functions** (polynomial, logarithmic, exponential, etc.).
+- Evaluates them at multiple values of `n` (`2, 4, 8, ..., 1024`).
+- Dynamically prints function values for comparison.
+- Uses **`qsort`** to order functions based on their growth at large `n`.
+- Shows how functions behave as `n` increases.
 
-Smallest to Largest:
+---
 
-          1/n → tends to 0.
-          log2(n).
-          12n^0.5, 50n^0.5 (both grow like n^0.5).
-          n^0.51.
-          (2^32)n → same as O(n).
-          n log n.
-          100n^2+6n, n^2-324 → both grow like n^2.
-          2n^3.
-          n^(log2(n)) → faster than any polynomial, slower than true exponentials.
-          3^n.
+## ⚙️ Functions Defined
+1. `n * log2(n)`
+2. `12 * sqrt(n)`
+3. `1/n`
+4. `n^(log2(n))`
+5. `100*n^2 + 6*n`
+6. `n^0.51`
+7. `n^2 - 324`
+8. `50*sqrt(n)`
+9. `2*n^3`
+10. `3^n`
+11. `(2^32) * n`
+12. `log2(n)`
 
+---
 
-Equivalent pairs:
+## 🖥️ Code Overview
+- **Function Pointers**: An array stores all function references.
+- **Struct `FuncVal`**: Used for sorting function values.
+- **Sorting**: Implemented with `qsort()` to order functions based on growth at a large value of `n`.
 
-          12n^0.5   and 50n^0.5   -> Θ(n^0.5)
-          100n^2+6n and n^2-324   -> Θ(n^2)
-_________________________________________________________________________________________________
-Approach:
+---
 
-All the values of n are dynamically increased for each functions and their growth are observed .
-_________________________________________________________________________________________________
-OUTPUT :
-Dynamic Growth Comparison:
+## ▶️ Example Output
+          Dynamic Growth Comparison:
 
           n = 2 
           n*log2(n)       = 2.000000e+00
@@ -182,16 +180,12 @@ Dynamic Growth Comparison:
           2^32*n          = 4.398047e+12
           log2(n)         = 1.000000e+01
           
-          Order of functions by growth at n = 1024:
-          1. 1/n             -> 9.765625e-04
-          2. log2(n)         -> 1.000000e+01
-          3. n^0.51          -> 3.429675e+01
-          4. 12*sqrt(n)      -> 3.840000e+02
-          5. 50*sqrt(n)      -> 1.600000e+03
-          6. n*log2(n)       -> 1.024000e+04
-          7. n^2-324         -> 1.048252e+06
-          8. 100*n^2+6n      -> 1.048637e+08
-          9. 2*n^3           -> 2.147484e+09
-          10. 2^32*n          -> 4.398047e+12
-          11. n^(log2(n))     -> 1.267651e+30
-          12. 3^n             -> inf
+          Order of functions by growth
+           1/n  < log2(n)  < n^0.51  < 12*sqrt(n)  < 50*sqrt(n)  < n*log2(n)  < n^2-324  < 100*n^2+6n  < 2*n^3  < 2^32*n  < n^(log2(n))  < 3^n
+---
+
+## 🚀 Compilation & Execution
+
+### Compile
+```bash
+Lab01-1_OrderofGrowth.exe
