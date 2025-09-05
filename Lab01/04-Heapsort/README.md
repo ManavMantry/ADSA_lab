@@ -1,87 +1,59 @@
-Problem Statement: Heap Sort
+# ⚙️ Heap Sort in C
 
-Design and implement a program in C to sort a given list of n elements using the Heap Sort algorithm.
+This project implements the **Heap Sort algorithm** in C.  
+Heap Sort is a **comparison-based sorting technique** based on a **binary heap data structure**.  
+It works by first building a **max heap** and then repeatedly extracting the maximum element to sort the array.
 
-The program should:
+---
 
-      1.Take the number of elements n as input from the user.
-      
-      2.Accept n integers as input elements.
-      
-      3.Sort the elements in ascending order using the Heap Sort algorithm.
-      
-      4.Display the array before sorting and after sorting.
+## 🚀 Features
+- Implementation of **Heap Sort** in C.
+- Uses **max heap** to sort in ascending order.
+- Handles user input for array size and elements.
+- Prints both the **original array** and the **sorted array**.
 
-----------------------------------------------------------------------------------
-Heap Sort Algorithm
+---
 
-Input:
+## 📚 Algorithm: Heap Sort
 
-    An array A of size n.
-
-Output:
-
-    Sorted array in ascending order.
-
-Steps
-
-Build Max Heap:
-
-     Rearrange the array elements to form a max heap (largest element at root).
-
-     Start heapifying from the last non-leaf node down to the root.
-
-Repeat until the heap size is greater than 1:
-
-     Swap the root element (A[0], largest) with the last element in the heap.
-
-     Reduce the heap size by 1.
+1. **Start**
+2. Input number of elements `n` and the array.
+3. **Build a max heap**:
+   - For each non-leaf node from `n/2 - 1` down to `0`, call `heapify`.
+4. **Heap sort process**:
+   - Swap the root element (largest) with the last element.
+   - Reduce the heap size by 1.
+   - Call `heapify` on the root to maintain max heap property.
+   - Repeat until the heap size is 1.
+5. The array is now sorted in ascending order.
+6. **End**
 
 
+---
 
-Call heapify on the root to restore the max heap property.
+## 🛠️ How to Compile & Run
+### Compile
+```bash
+Lab01-4_Heapsort.exe
+```
+## 📥 Input Format
 
-Heapify Procedure (for node i in heap of size n)
+Enter the number of elements (n).
 
-     Set largest = i.
+Enter n integers (array elements).
 
-     Find left child = 2*i + 1, right child = 2*i + 2.
+## 📤 Output Format
 
-     If left child exists and A[left] > A[largest], set largest = left.
-    
-     If right child exists and A[right] > A[largest], set largest = right.
-     
-     If largest != i, swap A[i] and A[largest], and recursively heapify largest.
+Prints the original array.
 
-Time Complexity
+Prints the sorted array after applying heap sort.
 
-     Building heap: O(n)
-    
-     Each extraction + heapify: O(log n)
-    
-     Total: O(n log n)
+---
 
--------------------------------------------------------------------------------------
-OUTPUT 1:
-    
-     Enter number of elements: 7
-     Enter 7 elements:
-     12 14 1 123 9 01 0
-     Original array: 12 14 1 123 9 1 0 
-     Sorted array:   0 1 1 9 12 14 123 
+## 🧾 Example
 
-OUTPUT 2:
-
-     Enter number of elements: 5
-     Enter 5 elements:
-     1 3 4 6 7 
-     Original array: 1 3 4 6 7 
-     Sorted array:   1 3 4 6 7
-
-OUTPUT 3:
-
-     Enter number of elements: 8
-     Enter 8 elements:
-     13 456 143 12 45 81 12 4 
-     Original array: 13 456 143 12 45 81 12 4 
-     Sorted array:   4 12 12 13 45 81 143 456
+      Enter number of elements: 6
+      Enter 6 elements:
+      12 11 13 5 6 7
+      Original array: 12 11 13 5 6 7 
+      Sorted array:   5 6 7 11 12 13
