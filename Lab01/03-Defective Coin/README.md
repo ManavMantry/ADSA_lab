@@ -1,46 +1,35 @@
-Problem Statement:
+# 🪙 Defective Coin Detection (C Program)
 
-    There are n coins.
-    n−1 coins are perfectly identical in weight.
-    At most one coin may be lighter (defective).
-    You must identify the defective coin (if any) using a balance scale.
+This project implements a **divide-and-conquer algorithm** in C to detect a **defective coin** (lighter coin) among a set of coins.  
+
+The program simulates a balance weighing method and recursively finds the defective coin with minimal comparisons.
+
+---
+
+## 🚀 Features
+- Implements **divide-and-conquer strategy**.
+- Finds the **lighter (defective) coin** efficiently.
+- Handles cases with:
+  - One coin
+  - Two coins
+  - Odd and even numbers of coins
+- Reports if **all coins are of equal weight** (no defective coin).
+
+---
+
+## 📂 Files
+- `defective_coin.c` → Main source code.
+- `README.md` → Project documentation.
+
+---
+
+## 🛠️ How to Compile & Run
+### Compile
+```bash
+gcc defective_coin.c -o defective_coin
 
 
-Algorithm Idea — Divide & Conquer:
 
-    1. This is like a binary search:
-    2. Divide the coins into two equal groups.
-    3. Weigh the groups:
-    4. If equal → defective coin (if it exists) must be in the leftover coin (when n is odd).
-    5. If left side lighter → defective is in left group.
-    6. If right side lighter → defective is in right group.
-    7. Recurse only into the lighter group.
 
-Base cases:
 
-    If only 1 coin → it’s the defective one.
-    If 2 coins → compare them directly.
-    This reduces the search space by half each time → complexity O(log₂ n).
 
-______________________________________________________________________________________________
-
-OUTPUT 1:
-
-    Enter number of coins: 7
-    Enter weights of coins:
-    10 10 10 4 10 10 10
-    Defective coin found at no. 4 (0-based), weight = 4
-
-OUTPUT 2:
-
-    Enter number of coins: 8
-    Enter weights of coins:
-    2 2 2 2 2 2 2 2
-    All coins are of equal weight. No defective coin.
-
-OUTPUT 3:
-
-    Enter number of coins: 1
-    Enter weights of coins:
-    1
-    Defective coin found at no. 1 (0-based), weight = 1
