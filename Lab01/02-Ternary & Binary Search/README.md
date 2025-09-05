@@ -1,113 +1,112 @@
-Concept of Ternary Search :
+# 🔎 Binary vs Ternary Search Performance Comparison
 
-Binary search: divides the array into 2 halves each time.
+This project compares the **execution time of Binary Search and Ternary Search** across different input sizes using **C** for implementation and **Python** for visualization.
 
-Ternary search: divides the array into 3 nearly equal parts each time.
+---
 
-At each step in ternary search:
+## 📌 Features
+- Implements **Binary Search** and **Ternary Search** in C.
+- Benchmarks execution time per search with `clock()`.
+- Stores results in a CSV file (`search_comparison.csv`).
+- Uses Python (Matplotlib) to plot performance graphs.
 
-    Find two mid points:
-    𝑚𝑖𝑑1=𝑙+(𝑟−𝑙)/3
-    mid1=l+(r−l)/3
-    𝑚𝑖𝑑2=𝑟−(𝑟−𝑙)/3
-    mid2=r−(r−l)/3
+---
 
-    Compare x with arr[mid1] and arr[mid2].
-    If x == arr[mid1] or x == arr[mid2] → found.
-    If x < arr[mid1] → search left segment.
-    If x > arr[mid2] → search right segment.
-    Otherwise → search middle segment.
+## ⚙️ Algorithms Explained
 
+### 📍 Binary Search
+Binary Search works on **sorted arrays** by repeatedly dividing the search interval into halves.
 
-Complexity Analysis:
-
-Binary Search
-
-    At each step, the array is divided into 2 parts.
-    T(n) = T(n/2) + O(1) 
-    By Master Theorem / recurrence solving:
-    T(n) = O(log₂ n)
-
-
-Ternary Search
-
-    At each step, the array is divided into 3 parts.
-    T(n) = T(n/3) + O(1)
-    So,
-    T(n) = O(log₃ n)
+#### Steps:
+1. Start with two pointers: `low = 0`, `high = n-1`.
+2. Find the middle index:  
+   `mid = (low + high) / 2`
+3. Compare:
+   - If `arr[mid] == key`, return `mid`.
+   - If `arr[mid] < key`, search in the **right half** (`low = mid + 1`).
+   - If `arr[mid] > key`, search in the **left half** (`high = mid - 1`).
+4. Repeat until `low > high`.  
+   If not found, return `-1`.
 
 
-Converting to same base
+#### Time Complexity:
+- **Best Case:** O(1) (key found at mid in first step)  
+- **Worst Case:** O(log₂ n)  
+- **Space Complexity:** O(1) (iterative)
 
-    Using the base-change rule:
-    log₃ n = (log₂ n) / (log₂ 3)
-    Since
-    log₂ 3 ≈ 1.585
-    we get:
-    O(log₃ n) = O((1 / 1.585) * log₂ n)
+---
 
---------------------------------------------------------------------------------
+### 📍 Ternary Search
+Ternary Search also works on **sorted arrays**, but divides the array into **three parts** instead of two.
 
-Approach :
-
-A loop systematically increases array size from 1000 to 200000,
-
-builds a sorted array for each size, and records how long both search algorithms take.
-
-The result is a dataset that can graph to see which algorithm is faster.
-
---------------------------------------------------------------------------------
-Program Explanation
-
-The main() function runs an experiment:
-
-    1.CSV file output creates search_comparison.csv with columns:
-    2.ArraySize, BinaryTime(ms), TernaryTime(ms)
-    3.Loop over different array sizes (1000 → 100000)
-    4.Creates a sorted array [1, 2, 3, …, n].
-    5.Search target = last element (worst case)
-    6.Both algorithms traverse all recursion/iteration levels.
-    7.Measure execution time Using clock() function from <time.h>.
-    8.Records how long each search takes in milliseconds.
-    8.Store results
-    9.Writes timings into CSV → which can be plotted later in Python.
+#### Steps:
+1. Start with `low = 0`, `high = n-1`.
+2. Find two midpoints:  
+   `mid1 = low + (high - low) / 3`  
+   `mid2 = high - (high - low) / 3`
+3. Compare:
+   - If `arr[mid1] == key`, return `mid1`.
+   - If `arr[mid2] == key`, return `mid2`.
+   - If `key < arr[mid1]`, search in the **first third** (`high = mid1 - 1`).
+   - If `key > arr[mid2]`, search in the **last third** (`low = mid2 + 1`).
+   - Otherwise, search in the **middle third** (`low = mid1 + 1`, `high = mid2 - 1`).
+4. Repeat until `low > high`.  
+   If not found, return `-1`.
 
 
-Key Findings :
+#### Time Complexity:
+- **Best Case:** O(1)  
+- **Worst Case:** O(log₃ n) (log base 3)  
+- **Space Complexity:** O(1) (iterative)  
 
-    Binary Search: O(log₂ n) comparisons.
-    Ternary Search: O(log₃ n) levels, but each level requires 2 comparisons instead of 1.
-    Therefore, Binary Search is faster in practice, even though log₃ n < log₂ n, because ternary search doubles the comparisons per step.
-    But the OUTPUTS says otherwise due to some internal optimisations.
+⚠️ Although `log₃ n < log₂ n`, Ternary Search performs **two comparisons per step** instead of one.  
+This increases the constant factor, making it **slower in practice** than Binary Search.
 
-__________________________________________________________________________
+---
 
-OUTPUT 1:
+## 📂 Project Structure
+├── search_comparison.c # C code for benchmarking
 
-    n=1000 | Binary=0.0000000400 | Ternary=0.0000000300
-    n=5000 | Binary=0.0000000600 | Ternary=0.0000000500
-    n=10000 | Binary=0.0000000700 | Ternary=0.0000000500
-    n=50000 | Binary=0.0000000900 | Ternary=0.0000000600
-    n=100000 | Binary=0.0000000900 | Ternary=0.0000000600
-    n=200000 | Binary=0.0000000900 | Ternary=0.0000000700
-    Results saved to search_comparison.csv
+├── plot_results.py # Python script for graph
 
-OUTPUT 2:
+├── search_comparison.csv # Generated results
 
-    n=1000 | Binary=0.0000000500 | Ternary=0.0000000400
-    n=5000 | Binary=0.0000000700 | Ternary=0.0000000500
-    n=10000 | Binary=0.0000000800 | Ternary=0.0000000700
-    n=50000 | Binary=0.0000000900 | Ternary=0.0000000700
-    n=100000 | Binary=0.0000000900 | Ternary=0.0000000700
-    n=200000 | Binary=0.0000001000 | Ternary=0.0000000700
-    Results saved to search_comparison.csv
+└── README.md # Documentation
 
-OUTPUT 3:
+---
 
-    n=1000 | Binary=0.0000000500 | Ternary=0.0000000300
-    n=5000 | Binary=0.0000000500 | Ternary=0.0000000400
-    n=10000 | Binary=0.0000000600 | Ternary=0.0000000600
-    n=50000 | Binary=0.0000000800 | Ternary=0.0000000600
-    n=100000 | Binary=0.0000000700 | Ternary=0.0000000700
-    n=200000 | Binary=0.0000000800 | Ternary=0.0000000500
-    Results saved to search_comparison.csv
+## 🚀 How to Run
+
+1️⃣ Compile and Run C Code
+
+    Lab01-2_Ternary&Binary.exe
+
+
+This will generate search_comparison.csv.
+
+2️⃣ Run Python Script
+    
+    python plotcompare.py
+
+
+This will open a plot comparing Binary and Ternary search runtimes.
+
+---
+
+## 📊 Example Graph
+
+(after running plotcompare.py)
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/4d83a948-cabb-4f85-b66f-adf19db25b8e" />
+
+
+---
+
+## 📈 Observations And Expected Result
+
+Binary Search consistently performs better than Ternary Search, even though both are logarithmic.
+Confirms that while both are logarithmic, Binary Search requires fewer comparisons per step.
+Ternary Search requires more comparisons per step, which leads to higher constant factors.
+
+Confirms the theoretical result: Binary Search is faster in practice.
+
