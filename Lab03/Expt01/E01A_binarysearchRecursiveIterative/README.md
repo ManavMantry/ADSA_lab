@@ -59,12 +59,26 @@ The user can choose which method to use at runtime.
 
 **Input:**
 
-
-
-
-
+      Enter number of elements: 5
+      Enter 5 sorted integers:
+      2 4 6 8 10
+      Enter key to search: 6
+      
+      Choose Search Method:
+      
+      1. Recursive Binary Search
+      
+      2. Iterative Binary Search
+      1
 
 **Output:**
+
+      Key 6 found at position 2 (0-based index).
+
+
+---
+
+
 
 
 
