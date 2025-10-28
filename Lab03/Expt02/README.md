@@ -72,17 +72,17 @@ Design and implement a **menu-driven C program** to perform the following operat
 
     --- Binary Search Tree Operations ---
     
-    Insert
+    1. Insert
     
-    Delete
+    2. Delete
     
-    Inorder Traversal
+    3. Inorder Traversal
     
-    Preorder Traversal
+    4. Preorder Traversal
     
-    Postorder Traversal
+    5. Postorder Traversal
     
-    Exit
+    6. Exit
     
     Create (build tree from multiple inputs)
     Enter your choice: 7
